@@ -14,7 +14,7 @@ export async function POST(request: NextRequest) {
       } else if (message.includes('longer') || message.includes('Expand')) {
         response = message.replace(/^.*?: "/, '').replace(/"$/, '') + ' This text has been expanded with additional context and details to provide more comprehensive information.'
       } else if (message.includes('grammar') || message.includes('Fix')) {
-        response = message.replace(/^.*?: "/, '').replace(/"$/, '').replace(/\b\w/g, l => l.toUpperCase())
+        response = message.replace(/^.*?: "/, '').replace(/"$/, '').replace(/\b\w/g, (l: string) => l.toUpperCase())
       } else if (message.includes('table') || message.includes('Table')) {
         const text = message.replace(/^.*?: "/, '').replace(/"$/, '')
         response = `| Item | Description |\n|------|-------------|\n| ${text} | Details about ${text} |`
